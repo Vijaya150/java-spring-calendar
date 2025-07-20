@@ -1,25 +1,23 @@
 pipeline {
-agent any
+    agent any
 
- tools{
- jdk17 'java_home'
- maven 'Maven'
- git 'Git'
- docker 'Docker'
-}
+    tools {
+        jdk 'Java_home'         // Name of JDK configured in "Global Tool Configuration"
+        maven 'Maven'           // Name of Maven configured in "Global Tool Configuration"
+        dockerTool 'Docker'  // Use this only if you configured Docker in Jenkins
+    }
 
-stages{
- stage('Git checkout'){
-  steps {
-   git url: "https://github.com/Vijaya150/java-spring-calendar.git "
-}
-}
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git url: 'https://github.com/Vijaya150/java-spring-calendar.git'
+            }
+        }
 
-stage('Build with maven'){
-steps {
- sh 'mvn clean install'
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+    }
 }
-}
-}
-}
- 
