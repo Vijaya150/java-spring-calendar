@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/Vijaya150/java-spring-calendar.git'
+                git branch: 'main', url: 'https://github.com/Vijaya150/java-spring-calendar.git'
             }
         }
 
