@@ -26,13 +26,17 @@ pipeline {
             }
         }
 
-      stage('Docker login') {
-          steps{
-              withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'docker-password', usernameVariable: 'docker-username')]) {
-                  sh '''
-                   echo $docker_password | docker login -u $docker_username --password-stdin
-                    docker push vijayadarshini/calender
-                    sh '''
+      stage('Docker login & Push') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+            sh '''
+                echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                docker push vijayadarshini/calender
+            '''
+        }
+    }
+}
+
               }
           }
       }
