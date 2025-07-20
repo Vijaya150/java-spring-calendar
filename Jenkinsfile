@@ -2,10 +2,10 @@ pipeline {
 agent any
 
  tools{
- jdk17 "java_home"
- maven "Maven"
- git "Git"
- docker "Docker"
+ jdk17 'java_home'
+ maven 'Maven'
+ git 'Git'
+ docker 'Docker'
 }
 
 stages{
