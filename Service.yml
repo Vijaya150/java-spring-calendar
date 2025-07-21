@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: calender-service
+spec:
+  selector:
+    app: calender
+  type: NodePort
+  ports:
+    nodePort: 30080
+    port: 8080
+    targetPort: 80
+    
