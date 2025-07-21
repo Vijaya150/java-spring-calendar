@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calender-app
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+    app: calender
+ template:
+   metadata:
+     labels:
+       app: calender
+   spec:
+     containers:
+       - name: calenderapp
+         image: vijayadarshini/calender
+         ports:
+          - containerPort: 80
